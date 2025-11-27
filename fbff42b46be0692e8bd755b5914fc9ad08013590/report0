@@ -1,0 +1,168 @@
+==================================================================
+BUG: KASAN: slab-use-after-free in __mutex_waiter_is_first kernel/locking/mutex.c:183 [inline]
+BUG: KASAN: slab-use-after-free in __mutex_lock_common kernel/locking/mutex.c:678 [inline]
+BUG: KASAN: slab-use-after-free in __mutex_lock+0x1b22/0x1dd0 kernel/locking/mutex.c:760
+Read of size 8 at addr ffff888105f10b20 by task kworker/0:2/1233
+
+CPU: 0 UID: 0 PID: 1233 Comm: kworker/0:2 Not tainted 6.18.0-rc7 #2 PREEMPT(full) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events l2cap_chan_timeout
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x116/0x1b0 lib/dump_stack.c:120
+ print_address_description mm/kasan/report.c:378 [inline]
+ print_report+0xca/0x5f0 mm/kasan/report.c:482
+ kasan_report+0xca/0x100 mm/kasan/report.c:595
+ __mutex_waiter_is_first kernel/locking/mutex.c:183 [inline]
+ __mutex_lock_common kernel/locking/mutex.c:678 [inline]
+ __mutex_lock+0x1b22/0x1dd0 kernel/locking/mutex.c:760
+ l2cap_chan_timeout+0x6d/0x310 net/bluetooth/l2cap_core.c:417
+ process_one_work+0x990/0x1b40 kernel/workqueue.c:3263
+ process_scheduled_works kernel/workqueue.c:3346 [inline]
+ worker_thread+0x67e/0xe90 kernel/workqueue.c:3427
+ kthread+0x446/0x890 kernel/kthread.c:463
+ ret_from_fork+0x669/0x7c0 arch/x86/kernel/process.c:158
+ ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entry_64.S:245
+ </TASK>
+
+Allocated by task 80710:
+ kasan_save_stack+0x24/0x50 mm/kasan/common.c:56
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:77
+ poison_kmalloc_redzone mm/kasan/common.c:400 [inline]
+ __kasan_kmalloc+0xaa/0xb0 mm/kasan/common.c:417
+ kmalloc_noprof include/linux/slab.h:957 [inline]
+ kzalloc_noprof include/linux/slab.h:1094 [inline]
+ l2cap_conn_add.part.0+0x60/0xaa0 net/bluetooth/l2cap_core.c:6887
+ l2cap_conn_add include/net/bluetooth/hci_core.h:1676 [inline]
+ l2cap_chan_connect+0x13bb/0x1ef0 net/bluetooth/l2cap_core.c:7078
+ l2cap_sock_connect+0x3f6/0x750 net/bluetooth/l2cap_sock.c:256
+ kernel_connect+0x10b/0x160 net/socket.c:3672
+ rfcomm_session_create net/bluetooth/rfcomm/core.c:811 [inline]
+ __rfcomm_dlc_open net/bluetooth/rfcomm/core.c:388 [inline]
+ rfcomm_dlc_open+0x7f8/0xaa0 net/bluetooth/rfcomm/core.c:431
+ rfcomm_sock_connect+0x425/0x670 net/bluetooth/rfcomm/sock.c:409
+ __sys_connect_file+0x14c/0x1b0 net/socket.c:2102
+ __sys_connect+0x161/0x1a0 net/socket.c:2121
+ __do_sys_connect net/socket.c:2127 [inline]
+ __se_sys_connect net/socket.c:2124 [inline]
+ __x64_sys_connect+0x72/0xb0 net/socket.c:2124
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0x72/0xfa0 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+
+Freed by task 82114:
+ kasan_save_stack+0x24/0x50 mm/kasan/common.c:56
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:77
+ __kasan_save_free_info+0x3b/0x60 mm/kasan/generic.c:587
+ kasan_save_free_info mm/kasan/kasan.h:406 [inline]
+ poison_slab_object mm/kasan/common.c:252 [inline]
+ __kasan_slab_free+0x61/0x80 mm/kasan/common.c:284
+ kasan_slab_free include/linux/kasan.h:234 [inline]
+ slab_free_hook mm/slub.c:2543 [inline]
+ slab_free mm/slub.c:6642 [inline]
+ kfree+0x162/0x740 mm/slub.c:6849
+ l2cap_conn_free net/bluetooth/l2cap_core.c:1812 [inline]
+ kref_put include/linux/kref.h:65 [inline]
+ l2cap_conn_put net/bluetooth/l2cap_core.c:1824 [inline]
+ l2cap_conn_del+0x58d/0x740 net/bluetooth/l2cap_core.c:1804
+ l2cap_disconn_cfm net/bluetooth/l2cap_core.c:7326 [inline]
+ l2cap_disconn_cfm+0x90/0xd0 net/bluetooth/l2cap_core.c:7319
+ hci_disconn_cfm include/net/bluetooth/hci_core.h:2122 [inline]
+ hci_conn_hash_flush+0x10e/0x260 net/bluetooth/hci_conn.c:2614
+ hci_dev_close_sync+0x5a9/0x11c0 net/bluetooth/hci_sync.c:5308
+ hci_dev_do_close+0x31/0xa0 net/bluetooth/hci_core.c:501
+ hci_unregister_dev+0x227/0x640 net/bluetooth/hci_core.c:2715
+ vhci_release+0x181/0x230 drivers/bluetooth/hci_vhci.c:690
+ __fput+0x402/0xb50 fs/file_table.c:468
+ task_work_run+0x16b/0x260 kernel/task_work.c:227
+ exit_task_work include/linux/task_work.h:40 [inline]
+ do_exit+0x85a/0x2b60 kernel/exit.c:966
+ do_group_exit+0xd3/0x2a0 kernel/exit.c:1107
+ get_signal+0x2282/0x2550 kernel/signal.c:3034
+ arch_do_signal_or_restart+0x80/0x780 arch/x86/kernel/signal.c:337
+ exit_to_user_mode_loop kernel/entry/common.c:40 [inline]
+ exit_to_user_mode_prepare include/linux/irq-entry-common.h:225 [inline]
+ irqentry_exit_to_user_mode+0x172/0x300 kernel/entry/common.c:73
+ exc_page_fault+0xe5/0x170 arch/x86/mm/fault.c:1535
+ asm_exc_page_fault+0x26/0x30 arch/x86/include/asm/idtentry.h:618
+
+The buggy address belongs to the object at ffff888105f10800
+ which belongs to the cache kmalloc-1k of size 1024
+The buggy address is located 800 bytes inside of
+ freed 1024-byte region [ffff888105f10800, ffff888105f10c00)
+
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff888105f11000 pfn:0x105f10
+head: order:3 mapcount:0 entire_mapcount:0 nr_pages_mapped:0 pincount:0
+flags: 0x57ff00000000240(workingset|head|node=1|zone=2|lastcpupid=0x7ff)
+page_type: f5(slab)
+raw: 057ff00000000240 ffff88801b042dc0 ffffea0004b38610 ffffea0004b50410
+raw: ffff888105f11000 0000000000100003 00000000f5000000 0000000000000000
+head: 057ff00000000240 ffff88801b042dc0 ffffea0004b38610 ffffea0004b50410
+head: ffff888105f11000 0000000000100003 00000000f5000000 0000000000000000
+head: 057ff00000000003 ffffea000417c401 00000000ffffffff 00000000ffffffff
+head: ffffffffffffffff 0000000000000000 00000000ffffffff 0000000000000008
+page dumped because: kasan: bad access detected
+page_owner tracks the page as allocated
+page last allocated via order 3, migratetype Unmovable, gfp_mask 0xd20c0(__GFP_IO|__GFP_FS|__GFP_NOWARN|__GFP_NORETRY|__GFP_COMP|__GFP_NOMEMALLOC), pid 9835, tgid 9835 (syz-executor), ts 342811536693, free_ts 342760580217
+ set_page_owner include/linux/page_owner.h:32 [inline]
+ post_alloc_hook+0x1ca/0x240 mm/page_alloc.c:1845
+ prep_new_page mm/page_alloc.c:1853 [inline]
+ get_page_from_freelist+0x1117/0x3020 mm/page_alloc.c:3879
+ __alloc_frozen_pages_noprof+0x217/0x3a0 mm/page_alloc.c:5178
+ alloc_pages_mpol+0x1f1/0x550 mm/mempolicy.c:2416
+ alloc_slab_page mm/slub.c:3059 [inline]
+ allocate_slab+0x229/0x330 mm/slub.c:3232
+ new_slab mm/slub.c:3286 [inline]
+ ___slab_alloc+0xecf/0x1d80 mm/slub.c:4655
+ __slab_alloc.constprop.0+0x66/0x110 mm/slub.c:4778
+ __slab_alloc_node mm/slub.c:4854 [inline]
+ slab_alloc_node mm/slub.c:5276 [inline]
+ __do_kmalloc_node mm/slub.c:5649 [inline]
+ __kmalloc_node_noprof+0x619/0xa40 mm/slub.c:5656
+ kmalloc_node_noprof include/linux/slab.h:987 [inline]
+ qdisc_alloc+0xb7/0xca0 net/sched/sch_generic.c:953
+ qdisc_create_dflt+0x96/0x480 net/sched/sch_generic.c:1015
+ attach_one_default_qdisc net/sched/sch_generic.c:1181 [inline]
+ netdev_for_each_tx_queue include/linux/netdevice.h:2664 [inline]
+ attach_default_qdiscs net/sched/sch_generic.c:1199 [inline]
+ dev_activate+0x637/0x12b0 net/sched/sch_generic.c:1258
+ __dev_open+0x647/0x9a0 net/core/dev.c:1691
+ __dev_change_flags+0x581/0x750 net/core/dev.c:9637
+ netif_change_flags+0x8e/0x170 net/core/dev.c:9700
+ do_setlink.constprop.0+0xc85/0x3fb0 net/core/rtnetlink.c:3151
+ rtnl_changelink net/core/rtnetlink.c:3769 [inline]
+ __rtnl_newlink net/core/rtnetlink.c:3928 [inline]
+ rtnl_newlink+0x15a6/0x2260 net/core/rtnetlink.c:4065
+page last free pid 9835 tgid 9835 stack trace:
+ reset_page_owner include/linux/page_owner.h:25 [inline]
+ free_pages_prepare mm/page_alloc.c:1394 [inline]
+ __free_frozen_pages+0x835/0x1160 mm/page_alloc.c:2901
+ qlink_free mm/kasan/quarantine.c:163 [inline]
+ qlist_free_all+0x4c/0x120 mm/kasan/quarantine.c:179
+ kasan_quarantine_reduce+0x195/0x1e0 mm/kasan/quarantine.c:286
+ __kasan_kmalloc+0x8a/0xb0 mm/kasan/common.c:408
+ kasan_kmalloc include/linux/kasan.h:262 [inline]
+ __do_kmalloc_node mm/slub.c:5650 [inline]
+ __kmalloc_noprof+0x348/0xa90 mm/slub.c:5662
+ kmalloc_noprof include/linux/slab.h:961 [inline]
+ tomoyo_realpath_from_path+0xc3/0x600 security/tomoyo/realpath.c:251
+ tomoyo_get_realpath security/tomoyo/file.c:151 [inline]
+ tomoyo_path_number_perm+0x221/0x550 security/tomoyo/file.c:723
+ security_file_ioctl+0x9f/0x260 security/security.c:2982
+ __do_sys_ioctl fs/ioctl.c:591 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0xb7/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0x72/0xfa0 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+
+Memory state around the buggy address:
+ ffff888105f10a00: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+ ffff888105f10a80: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+>ffff888105f10b00: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+                               ^
+ ffff888105f10b80: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+ ffff888105f10c00: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+==================================================================
