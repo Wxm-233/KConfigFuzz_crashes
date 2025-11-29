@@ -1,0 +1,184 @@
+[?2004hroot@syzkaller:~# ./4055
+[?2004l
+[  193.476460][ T9759] comedi comedi2: 8255: I/O port conflict (0x10,4)
+[  193.476460][ T9759] comedi comedi2: 8255: I/O port conflict (0x10,4)
+[  193.477212][ T9759] comedi comedi2: 8255: I/O port conflict (0x6,4)
+[  193.477212][ T9759] comedi comedi2: 8255: I/O port conflict (0x6,4)
+[  193.477872][ T9759] comedi comedi2: 8255: I/O port conflict (0xffffffffffffffff,4)
+[  193.477872][ T9759] comedi comedi2: 8255: I/O port conflict (0xffffffffffffffff,4)
+[  193.478655][ T9759] comedi comedi2: 8255: I/O port conflict (0xc000000,4)
+[  193.478655][ T9759] comedi comedi2: 8255: I/O port conflict (0xc000000,4)
+[  193.479355][ T9759] comedi comedi2: 8255: I/O port conflict (0x8,4)
+[  193.479355][ T9759] comedi comedi2: 8255: I/O port conflict (0x8,4)
+[  193.480005][ T9759] comedi comedi2: 8255: I/O port conflict (0x2,4)
+[  193.480005][ T9759] comedi comedi2: 8255: I/O port conflict (0x2,4)
+[  193.480679][ T9759] comedi comedi2: 8255: I/O port conflict (0x6,4)
+[  193.480679][ T9759] comedi comedi2: 8255: I/O port conflict (0x6,4)
+[ exe 193.481327][ T9759] comedi comedi2: 8255: I/O port conflict (0xffffffff80000000,4)
+cuting program
+[  193.481327][ T9759] comedi comedi2: 8255: I/O port conflict (0xffffffff80000000,4)
+[  193.491645][ T9759] comedi comedi2: 8255: I/O port conflict (0x5,4)
+[  193.491645][ T9759] comedi comedi2: 8255: I/O port conflict (0x5,4)
+[  193.494813][ T9759] comedi comedi2: 8255: I/O port conflict (0x9,4)
+[  193.494813][ T9759] comedi comedi2: 8255: I/O port conflict (0x9,4)
+[  193.497942][ T9759] comedi comedi2: 8255: I/O port conflict (0x7fff,4)
+[  193.497942][ T9759] comedi comedi2: 8255: I/O port conflict (0x7fff,4)
+[  193.502164][ T9759] comedi comedi2: 8255: I/O port conflict (0xe,4)
+[  193.502164][ T9759] comedi comedi2: 8255: I/O port conflict (0xe,4)
+[  193.505456][ T9759] comedi comedi2: 8255: I/O port conflict (0xffff,4)
+[  193.505456][ T9759] comedi comedi2: 8255: I/O port conflict (0xffff,4)
+[  193.508778][ T9759] comedi comedi2: 8255: I/O port conflict (0x7f,4)
+[  193.508778][ T9759] comedi comedi2: 8255: I/O port conflict (0x7f,4)
+[  193.514793][ T9759] comedi comedi2: 8255: I/O port conflict (0x6,4)
+[  193.514793][ T9759] comedi comedi2: 8255: I/O port conflict (0x6,4)
+[  193.518197][ T9759] comedi comedi2: 8255: I/O port conflict (0xf,4)
+[  193.518197][ T9759] comedi comedi2: 8255: I/O port conflict (0xf,4)
+[  193.521455][ T9759] comedi comedi2: 8255: I/O port conflict (0x5,4)
+[  193.521455][ T9759] comedi comedi2: 8255: I/O port conflict (0x5,4)
+[  193.525458][ T9759] comedi comedi2: 8255: I/O port conflict (0x1,4)
+[  193.525458][ T9759] comedi comedi2: 8255: I/O port conflict (0x1,4)
+[  193.528556][ T9759] comedi comedi2: 8255: I/O port conflict (0x1,4)
+[  193.528556][ T9759] comedi comedi2: 8255: I/O port conflict (0x1,4)
+[  193.535388][ T9759] comedi comedi2: 8255: I/O port conflict (0x9,4)
+[  193.535388][ T9759] comedi comedi2: 8255: I/O port conflict (0x9,4)
+[  193.538793][ T9759] comedi comedi2: 8255: I/O port conflict (0x5,4)
+[  193.538793][ T9759] comedi comedi2: 8255: I/O port conflict (0x5,4)
+[  193.542530][ T9759] comedi comedi2: 8255: I/O port conflict (0x7,4)
+[  193.542530][ T9759] comedi comedi2: 8255: I/O port conflict (0x7,4)
+[  193.550635][ T9759] BUG: unable to handle page fault for address: ffffffff88b7fa1d
+[  193.550635][ T9759] BUG: unable to handle page fault for address: ffffffff88b7fa1d
+[  193.554625][ T9759] #PF: supervisor write access in kernel mode
+[  193.554625][ T9759] #PF: supervisor write access in kernel mode
+[  193.557574][ T9759] #PF: error_code(0x0003) - permissions violation
+[  193.557574][ T9759] #PF: error_code(0x0003) - permissions violation
+[  193.560626][ T9759] PGD dd87067 P4D dd87067 PUD dd88063 PMD 8a001a1 
+[  193.560626][ T9759] PGD dd87067 P4D dd87067 PUD dd88063 PMD 8a001a1 
+[  193.567951][ T9759] Oops: Oops: 0003 [#1] SMP KASAN PTI
+[  193.567951][ T9759] Oops: Oops: 0003 [#1] SMP KASAN PTI
+[  193.570536][ T9759] CPU: 1 UID: 0 PID: 9759 Comm: 4055 Not tainted 6.18.0-rc7 #2 PREEMPT(full) 
+[  193.570536][ T9759] CPU: 1 UID: 0 PID: 9759 Comm: 4055 Not tainted 6.18.0-rc7 #2 PREEMPT(full) 
+[  193.576135][ T9759] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  193.576135][ T9759] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  193.580480][ T9759] RIP: 0010:subdev_8255_io+0x80/0x90
+[  193.580480][ T9759] RIP: 0010:subdev_8255_io+0x80/0x90
+[  193.583314][ T9759] Code: 21 e8 54 91 06 f9 89 da ec 44 0f b6 e0 e8 48 91 06 f9 44 89 e0 5b 5d 41 5c 41 5d 41 5e e9 98 9a 7b 02 e8 33 91 06 f9 44 89 e8 <89> 66 90 45 31 e4 eb db e8 63 a8 6d f9 eb af 90 90 90 90 90 90 90
+[  193.583314][ T9759] Code: 21 e8 54 91 06 f9 89 da ec 44 0f b6 e0 e8 48 91 06 f9 44 89 e0 5b 5d 41 5c 41 5d 41 5e e9 98 9a 7b 02 e8 33 91 06 f9 44 89 e8 <89> 66 90 45 31 e4 eb db e8 63 a8 6d f9 eb af 90 90 90 90 90 90 90
+[  193.593342][ T9759] RSP: 0018:ffffc9000f12f978 EFLAGS: 00010293
+[  193.593342][ T9759] RSP: 0018:ffffc9000f12f978 EFLAGS: 00010293
+[  193.596362][ T9759] RAX: 000000000000009b RBX: 0000000000000103 RCX: ffffffff88b7fa63
+[  193.596362][ T9759] RAX: 000000000000009b RBX: 0000000000000103 RCX: ffffffff88b7fa63
+[  193.600302][ T9759] RDX: ffff88810803d700 RSI: ffffffff88b7fa8d RDI: 0000000000000005
+[  193.600302][ T9759] RDX: ffff88810803d700 RSI: ffffffff88b7fa8d RDI: 0000000000000005
+[  193.604222][ T9759] RBP: 0000000000000001 R08: 0000000000000100 R09: ffff888134cc9190
+[  193.604222][ T9759] RBP: 0000000000000001 R08: 0000000000000100 R09: ffff888134cc9190
+[  193.608099][ T9759] R10: 0000000000000001 R11: 0000000000000002 R12: ffff8880202c6800
+[  193.608099][ T9759] R10: 0000000000000001 R11: 0000000000000002 R12: ffff8880202c6800
+[  193.612110][ T9759] R13: 000000000000009b R14: 0000000000000003 R15: 0000000000000100
+[  193.612110][ T9759] R13: 000000000000009b R14: 0000000000000003 R15: 0000000000000100
+[  193.615955][ T9759] FS:  00007feefda2c540(0000) GS:ffff8881a285e000(0000) knlGS:0000000000000000
+[  193.615955][ T9759] FS:  00007feefda2c540(0000) GS:ffff8881a285e000(0000) knlGS:0000000000000000
+[  193.620280][ T9759] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  193.620280][ T9759] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  193.623628][ T9759] CR2: ffffffff88b7fa1d CR3: 000000011c2c0000 CR4: 00000000000006f0
+[  193.623628][ T9759] CR2: ffffffff88b7fa1d CR3: 000000011c2c0000 CR4: 00000000000006f0
+[  193.627695][ T9759] Call Trace:
+[  193.627695][ T9759] Call Trace:
+[  193.629230][ T9759]  <TASK>
+[  193.629230][ T9759]  <TASK>
+[  193.630662][ T9759]  subdev_8255_io_init+0x239/0x2d0
+[  193.630662][ T9759]  subdev_8255_io_init+0x239/0x2d0
+[  193.633342][ T9759]  dev_8255_attach+0x25a/0x3b0
+[  193.633342][ T9759]  dev_8255_attach+0x25a/0x3b0
+[  193.635672][ T9759]  comedi_device_attach+0x3ae/0x900
+[  193.635672][ T9759]  comedi_device_attach+0x3ae/0x900
+[  193.638225][ T9759]  do_devconfig_ioctl+0x19e/0x6d0
+[  193.638225][ T9759]  do_devconfig_ioctl+0x19e/0x6d0
+[  193.640709][ T9759]  ? comedi_unlocked_ioctl+0x165/0x2e50
+[  193.640709][ T9759]  ? comedi_unlocked_ioctl+0x165/0x2e50
+[  193.643488][ T9759]  ? __pfx_do_devconfig_ioctl+0x10/0x10
+[  193.643488][ T9759]  ? __pfx_do_devconfig_ioctl+0x10/0x10
+[  193.646194][ T9759]  comedi_unlocked_ioctl+0x15fc/0x2e50
+[  193.646194][ T9759]  comedi_unlocked_ioctl+0x15fc/0x2e50
+[  193.648891][ T9759]  ? tomoyo_path_number_perm+0x169/0x550
+[  193.648891][ T9759]  ? tomoyo_path_number_perm+0x169/0x550
+[  193.651816][ T9759]  ? __pfx_tomoyo_path_number_perm+0x10/0x10
+[  193.651816][ T9759]  ? __pfx_tomoyo_path_number_perm+0x10/0x10
+[  193.654744][ T9759]  ? __pfx_comedi_unlocked_ioctl+0x10/0x10
+[  193.654744][ T9759]  ? __pfx_comedi_unlocked_ioctl+0x10/0x10
+[  193.657541][ T9759]  ? find_held_lock+0x2b/0x80
+[  193.657541][ T9759]  ? find_held_lock+0x2b/0x80
+[  193.659788][ T9759]  ? putname.part.0+0x11b/0x160
+[  193.659788][ T9759]  ? putname.part.0+0x11b/0x160
+[  193.662168][ T9759]  ? __sanitizer_cov_trace_switch+0x54/0x90
+[  193.662168][ T9759]  ? __sanitizer_cov_trace_switch+0x54/0x90
+[  193.665280][ T9759]  ? do_vfs_ioctl+0x125/0x1460
+[  193.665280][ T9759]  ? do_vfs_ioctl+0x125/0x1460
+[  193.667601][ T9759]  ? __pfx_do_vfs_ioctl+0x10/0x10
+[  193.667601][ T9759]  ? __pfx_do_vfs_ioctl+0x10/0x10
+[  193.670232][ T9759]  ? hook_file_ioctl_common+0x146/0x3f0
+[  193.670232][ T9759]  ? hook_file_ioctl_common+0x146/0x3f0
+[  193.673164][ T9759]  ? __x64_sys_openat+0x13f/0x1f0
+[  193.673164][ T9759]  ? __x64_sys_openat+0x13f/0x1f0
+[  193.675681][ T9759]  ? __pfx___x64_sys_openat+0x10/0x10
+[  193.675681][ T9759]  ? __pfx___x64_sys_openat+0x10/0x10
+[  193.678326][ T9759]  ? __pfx_comedi_unlocked_ioctl+0x10/0x10
+[  193.678326][ T9759]  ? __pfx_comedi_unlocked_ioctl+0x10/0x10
+[  193.681296][ T9759]  __x64_sys_ioctl+0x18f/0x210
+[  193.681296][ T9759]  __x64_sys_ioctl+0x18f/0x210
+[  193.683797][ T9759]  do_syscall_64+0x72/0xfa0
+[  193.683797][ T9759]  do_syscall_64+0x72/0xfa0
+[  193.686087][ T9759]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  193.686087][ T9759]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  193.688956][ T9759] RIP: 0033:0x7feefd94bfc9
+[  193.688956][ T9759] RIP: 0033:0x7feefd94bfc9
+[  193.691197][ T9759] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 97 8e 0d 00 f7 d8 64 89 01 48
+[  193.691197][ T9759] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 97 8e 0d 00 f7 d8 64 89 01 48
+[  193.701029][ T9759] RSP: 002b:00007ffe89e76e58 EFLAGS: 00000283 ORIG_RAX: 0000000000000010
+[  193.701029][ T9759] RSP: 002b:00007ffe89e76e58 EFLAGS: 00000283 ORIG_RAX: 0000000000000010
+[  193.705209][ T9759] RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007feefd94bfc9
+[  193.705209][ T9759] RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007feefd94bfc9
+[  193.709056][ T9759] RDX: 0000200000000040 RSI: 0000000040946400 RDI: 0000000000000003
+[  193.709056][ T9759] RDX: 0000200000000040 RSI: 0000000040946400 RDI: 0000000000000003
+[  193.713108][ T9759] RBP: 00007ffe89e76e70 R08: 00007ffe89e76e70 R09: 00007ffe89e76e70
+[  193.713108][ T9759] RBP: 00007ffe89e76e70 R08: 00007ffe89e76e70 R09: 00007ffe89e76e70
+[  193.717305][ T9759] R10: 00007ffe89e768e0 R11: 0000000000000283 R12: 000055b9115ad190
+[  193.717305][ T9759] R10: 00007ffe89e768e0 R11: 0000000000000283 R12: 000055b9115ad190
+[  193.721402][ T9759] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[  193.721402][ T9759] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[  193.725353][ T9759]  </TASK>
+[  193.725353][ T9759]  </TASK>
+[  193.726835][ T9759] Modules linked in:
+[  193.726835][ T9759] Modules linked in:
+[  193.728733][ T9759] CR2: ffffffff88b7fa1d
+[  193.728733][ T9759] CR2: ffffffff88b7fa1d
+[  193.730703][ T9759] ---[ end trace 0000000000000000 ]---
+[  193.730703][ T9759] ---[ end trace 0000000000000000 ]---
+[  193.733374][ T9759] RIP: 0010:subdev_8255_io+0x80/0x90
+[  193.733374][ T9759] RIP: 0010:subdev_8255_io+0x80/0x90
+[  193.736048][ T9759] Code: 21 e8 54 91 06 f9 89 da ec 44 0f b6 e0 e8 48 91 06 f9 44 89 e0 5b 5d 41 5c 41 5d 41 5e e9 98 9a 7b 02 e8 33 91 06 f9 44 89 e8 <89> 66 90 45 31 e4 eb db e8 63 a8 6d f9 eb af 90 90 90 90 90 90 90
+[  193.736048][ T9759] Code: 21 e8 54 91 06 f9 89 da ec 44 0f b6 e0 e8 48 91 06 f9 44 89 e0 5b 5d 41 5c 41 5d 41 5e e9 98 9a 7b 02 e8 33 91 06 f9 44 89 e8 <89> 66 90 45 31 e4 eb db e8 63 a8 6d f9 eb af 90 90 90 90 90 90 90
+[  193.746009][ T9759] RSP: 0018:ffffc9000f12f978 EFLAGS: 00010293
+[  193.746009][ T9759] RSP: 0018:ffffc9000f12f978 EFLAGS: 00010293
+[  193.749211][ T9759] RAX: 000000000000009b RBX: 0000000000000103 RCX: ffffffff88b7fa63
+[  193.749211][ T9759] RAX: 000000000000009b RBX: 0000000000000103 RCX: ffffffff88b7fa63
+[  193.753328][ T9759] RDX: ffff88810803d700 RSI: ffffffff88b7fa8d RDI: 0000000000000005
+[  193.753328][ T9759] RDX: ffff88810803d700 RSI: ffffffff88b7fa8d RDI: 0000000000000005
+[  193.758054][ T9759] RBP: 0000000000000001 R08: 0000000000000100 R09: ffff888134cc9190
+[  193.758054][ T9759] RBP: 0000000000000001 R08: 0000000000000100 R09: ffff888134cc9190
+[  193.762315][ T9759] R10: 0000000000000001 R11: 0000000000000002 R12: ffff8880202c6800
+[  193.762315][ T9759] R10: 0000000000000001 R11: 0000000000000002 R12: ffff8880202c6800
+[  193.767051][ T9759] R13: 000000000000009b R14: 0000000000000003 R15: 0000000000000100
+[  193.767051][ T9759] R13: 000000000000009b R14: 0000000000000003 R15: 0000000000000100
+[  193.771033][ T9759] FS:  00007feefda2c540(0000) GS:ffff8881a285e000(0000) knlGS:0000000000000000
+[  193.771033][ T9759] FS:  00007feefda2c540(0000) GS:ffff8881a285e000(0000) knlGS:0000000000000000
+[  193.775515][ T9759] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  193.775515][ T9759] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  193.778708][ T9759] CR2: ffffffff88b7fa1d CR3: 000000011c2c0000 CR4: 00000000000006f0
+[  193.778708][ T9759] CR2: ffffffff88b7fa1d CR3: 000000011c2c0000 CR4: 00000000000006f0
+[  193.782591][ T9759] Kernel panic - not syncing: Fatal exception
+[  193.782591][ T9759] Kernel panic - not syncing: Fatal exception
+[  193.785683][ T9759] Kernel Offset: disabled
+[  193.785683][ T9759] Kernel Offset: disabled
+[  193.787954][ T9759] Rebooting in 86400 seconds..
+[  193.787954][ T9759] Rebooting in 86400 seconds..
+QEMU: Terminated
