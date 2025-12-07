@@ -1,0 +1,451 @@
+Warning: Permanently added '[localhost]:50254' (ED25519) to the list of known hosts.
+2025/11/25 15:10:25 parsed 1 programs
+syzkaller login: [  205.614025][ T9769] cgroup: Unknown subsys name 'net'
+[  205.771486][ T9769] cgroup: Unknown subsys name 'cpuset'
+[  205.785927][ T9769] cgroup: Unknown subsys name 'rlimit'
+[  205.787653][ T9769] cgroup: Unknown subsys name 'memory'
+[  211.859111][ T9769] Adding 124996k swap on ./swap-file.  Priority:0 extents:1 across:124996k 
+[  220.080007][ T9846] Bluetooth: hci0: unexpected cc 0x0c03 length: 249 > 1
+[  220.093826][ T9846] Bluetooth: hci0: unexpected cc 0x1003 length: 249 > 9
+[  220.107127][ T9846] Bluetooth: hci0: unexpected cc 0x1001 length: 249 > 9
+[  220.116928][ T9846] Bluetooth: hci0: unexpected cc 0x0c23 length: 249 > 4
+[  220.120651][ T9846] Bluetooth: hci0: unexpected cc 0x0c38 length: 249 > 2
+[  223.353155][   T40] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  223.364574][   T40] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  223.429891][   T66] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  223.431637][   T66] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  228.804745][T10185] chnl_net:caif_netlink_parms(): no params data found
+[  229.032525][T10185] bridge0: port 1(bridge_slave_0) entered blocking state
+[  229.035930][T10185] bridge0: port 1(bridge_slave_0) entered disabled state
+[  229.037750][T10185] bridge_slave_0: entered allmulticast mode
+[  229.041800][T10185] bridge_slave_0: entered promiscuous mode
+[  229.050435][T10185] bridge0: port 2(bridge_slave_1) entered blocking state
+[  229.053039][T10185] bridge0: port 2(bridge_slave_1) entered disabled state
+[  229.054995][T10185] bridge_slave_1: entered allmulticast mode
+[  229.059627][T10185] bridge_slave_1: entered promiscuous mode
+[  229.142877][T10185] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  229.150808][T10185] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  229.236182][T10185] team0: Port device team_slave_0 added
+[  229.242995][T10185] team0: Port device team_slave_1 added
+[  229.328265][T10185] batman_adv: batadv0: Adding interface: batadv_slave_0
+[  229.330931][T10185] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1532 would solve the problem.
+[  229.338130][T10185] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[  229.346279][T10185] batman_adv: batadv0: Adding interface: batadv_slave_1
+[  229.348347][T10185] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1532 would solve the problem.
+[  229.353827][T10185] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[  229.527675][T10185] hsr_slave_0: entered promiscuous mode
+[  229.530902][T10185] hsr_slave_1: entered promiscuous mode
+[  230.210484][T10185] netdevsim netdevsim0 netdevsim0: renamed from eth0
+[  230.245419][T10185] netdevsim netdevsim0 netdevsim1: renamed from eth1
+[  230.263281][T10185] netdevsim netdevsim0 netdevsim2: renamed from eth2
+[  230.278690][T10185] netdevsim netdevsim0 netdevsim3: renamed from eth3
+[  230.579859][T10185] 8021q: adding VLAN 0 to HW filter on device bond0
+[  230.623953][T10185] 8021q: adding VLAN 0 to HW filter on device team0
+[  230.651413][ T4120] bridge0: port 1(bridge_slave_0) entered blocking state
+[  230.653492][ T4120] bridge0: port 1(bridge_slave_0) entered forwarding state
+[  230.680071][ T4120] bridge0: port 2(bridge_slave_1) entered blocking state
+[  230.682683][ T4120] bridge0: port 2(bridge_slave_1) entered forwarding state
+[  231.320452][T10185] 8021q: adding VLAN 0 to HW filter on device batadv0
+[  231.469860][T10185] veth0_vlan: entered promiscuous mode
+[  231.505627][T10185] veth1_vlan: entered promiscuous mode
+[  231.615175][T10185] veth0_macvtap: entered promiscuous mode
+[  231.631344][T10185] veth1_macvtap: entered promiscuous mode
+[  231.687022][T10185] batman_adv: batadv0: Interface activated: batadv_slave_0
+[  231.719829][T10185] batman_adv: batadv0: Interface activated: batadv_slave_1
+[  231.747048][   T12] netdevsim netdevsim0 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  231.753150][   T12] netdevsim netdevsim0 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  231.757878][   T12] netdevsim netdevsim0 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  231.779415][   T12] netdevsim netdevsim0 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  232.144930][   T12] netdevsim netdevsim0 netdevsim3 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  232.737816][   T12] netdevsim netdevsim0 netdevsim2 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  233.495950][   T12] netdevsim netdevsim0 netdevsim1 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  233.996622][   T12] netdevsim netdevsim0 netdevsim0 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  234.330227][   T12] bridge_slave_1: left allmulticast mode
+[  234.332315][   T12] bridge_slave_1: left promiscuous mode
+[  234.337810][   T12] bridge0: port 2(bridge_slave_1) entered disabled state
+[  234.372282][   T12] bridge_slave_0: left allmulticast mode
+[  234.374313][   T12] bridge_slave_0: left promiscuous mode
+[  234.376542][   T12] bridge0: port 1(bridge_slave_0) entered disabled state
+2025/11/25 15:11:01 executed programs: 0
+[  235.126358][   T12] bond0 (unregistering): (slave bond_slave_0): Releasing backup interface
+[  235.147311][   T12] bond0 (unregistering): (slave bond_slave_1): Releasing backup interface
+[  235.155391][   T12] bond0 (unregistering): Released all slaves
+[  235.199308][ T9846] Bluetooth: hci0: unexpected cc 0x0c03 length: 249 > 1
+[  235.206043][ T9846] Bluetooth: hci0: unexpected cc 0x1003 length: 249 > 9
+[  235.212404][ T9846] Bluetooth: hci0: unexpected cc 0x1001 length: 249 > 9
+[  235.237422][ T9846] Bluetooth: hci0: unexpected cc 0x0c23 length: 249 > 4
+[  235.242993][ T9846] Bluetooth: hci0: unexpected cc 0x0c38 length: 249 > 2
+[  235.703937][   T12] hsr_slave_0: left promiscuous mode
+[  235.706539][   T12] hsr_slave_1: left promiscuous mode
+[  235.709087][   T12] batman_adv: batadv0: Interface deactivated: batadv_slave_0
+[  235.710765][   T12] batman_adv: batadv0: Removing interface: batadv_slave_0
+[  235.725347][   T12] batman_adv: batadv0: Interface deactivated: batadv_slave_1
+[  235.727061][   T12] batman_adv: batadv0: Removing interface: batadv_slave_1
+[  235.770251][   T12] veth1_macvtap: left promiscuous mode
+[  235.771932][   T12] veth0_macvtap: left promiscuous mode
+[  235.775357][   T12] veth1_vlan: left promiscuous mode
+[  235.776852][   T12] veth0_vlan: left promiscuous mode
+[  236.597915][   T12] team0 (unregistering): Port device team_slave_1 removed
+[  236.622784][ T1327] ieee802154 phy0 wpan0: encryption failed: -22
+[  236.626717][ T1327] ieee802154 phy1 wpan1: encryption failed: -22
+[  236.676568][   T12] team0 (unregistering): Port device team_slave_0 removed
+[  237.335729][ T9846] Bluetooth: hci0: command tx timeout
+[  238.429949][T10593] chnl_net:caif_netlink_parms(): no params data found
+[  238.831543][T10593] bridge0: port 1(bridge_slave_0) entered blocking state
+[  238.837081][T10593] bridge0: port 1(bridge_slave_0) entered disabled state
+[  238.838890][T10593] bridge_slave_0: entered allmulticast mode
+[  238.842973][T10593] bridge_slave_0: entered promiscuous mode
+[  238.851411][T10593] bridge0: port 2(bridge_slave_1) entered blocking state
+[  238.853252][T10593] bridge0: port 2(bridge_slave_1) entered disabled state
+[  238.857279][T10593] bridge_slave_1: entered allmulticast mode
+[  238.861525][T10593] bridge_slave_1: entered promiscuous mode
+[  238.945567][T10593] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  238.953107][T10593] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  239.070122][T10593] team0: Port device team_slave_0 added
+[  239.087053][T10593] team0: Port device team_slave_1 added
+[  239.231227][T10593] batman_adv: batadv0: Adding interface: batadv_slave_0
+[  239.234028][T10593] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1532 would solve the problem.
+[  239.242728][T10593] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[  239.252019][T10593] batman_adv: batadv0: Adding interface: batadv_slave_1
+[  239.254912][T10593] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1532 would solve the problem.
+[  239.263721][T10593] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[  239.373122][T10593] hsr_slave_0: entered promiscuous mode
+[  239.376784][T10593] hsr_slave_1: entered promiscuous mode
+[  239.415908][ T9846] Bluetooth: hci0: command tx timeout
+[  240.238750][T10593] netdevsim netdevsim0 netdevsim0: renamed from eth0
+[  240.267471][T10593] netdevsim netdevsim0 netdevsim1: renamed from eth1
+[  240.282353][T10593] netdevsim netdevsim0 netdevsim2: renamed from eth2
+[  240.297619][T10593] netdevsim netdevsim0 netdevsim3: renamed from eth3
+[  240.477883][T10593] 8021q: adding VLAN 0 to HW filter on device bond0
+[  240.506197][T10593] 8021q: adding VLAN 0 to HW filter on device team0
+[  240.518125][ T4364] bridge0: port 1(bridge_slave_0) entered blocking state
+[  240.519872][ T4364] bridge0: port 1(bridge_slave_0) entered forwarding state
+[  240.538845][ T4364] bridge0: port 2(bridge_slave_1) entered blocking state
+[  240.541545][ T4364] bridge0: port 2(bridge_slave_1) entered forwarding state
+[  241.007812][T10593] 8021q: adding VLAN 0 to HW filter on device batadv0
+[  241.167553][T10593] veth0_vlan: entered promiscuous mode
+[  241.199041][T10593] veth1_vlan: entered promiscuous mode
+[  241.293256][T10593] veth0_macvtap: entered promiscuous mode
+[  241.304299][T10593] veth1_macvtap: entered promiscuous mode
+[  241.332660][T10593] batman_adv: batadv0: Interface activated: batadv_slave_0
+[  241.349609][T10593] batman_adv: batadv0: Interface activated: batadv_slave_1
+[  241.370645][ T9622] netdevsim netdevsim0 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  241.379188][ T9622] netdevsim netdevsim0 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  241.391918][ T9622] netdevsim netdevsim0 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  241.416997][ T9622] netdevsim netdevsim0 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  241.504348][ T9846] Bluetooth: hci0: command tx timeout
+[  241.614500][ T4364] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  241.616530][ T4364] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  241.716260][   T29] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  241.718036][   T29] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+2025/11/25 15:11:08 executed programs: 2
+[  242.188565][T10982] 
+[  242.189548][T10982] ======================================================
+[  242.191963][T10982] WARNING: possible circular locking dependency detected
+[  242.194422][T10982] 6.18.0-rc6 #1 Not tainted
+[  242.196073][T10982] ------------------------------------------------------
+[  242.198901][T10982] syz.0.17/10982 is trying to acquire lock:
+[  242.202611][T10982] ffffffff8e164f40 (fs_reclaim){+.+.}-{0:0}, at: prepare_alloc_pages+0x15f/0x600
+[  242.207211][T10982] 
+[  242.207211][T10982] but task is already holding lock:
+[  242.209705][T10982] ffffffff8e131d08 (pcpu_alloc_mutex){+.+.}-{4:4}, at: pcpu_alloc_noprof+0xcd3/0x1490
+[  242.213090][T10982] 
+[  242.213090][T10982] which lock already depends on the new lock.
+[  242.213090][T10982] 
+[  242.216648][T10982] 
+[  242.216648][T10982] the existing dependency chain (in reverse order) is:
+[  242.219729][T10982] 
+[  242.219729][T10982] -> #2 (pcpu_alloc_mutex){+.+.}-{4:4}:
+[  242.222359][T10982]        __mutex_lock+0x178/0x1dd0
+[  242.224191][T10982]        pcpu_alloc_noprof+0xcd3/0x1490
+[  242.226145][T10982]        sbitmap_init_node+0x2fe/0x760
+[  242.228117][T10982]        sbitmap_queue_init_node+0x40/0x4a0
+[  242.230221][T10982]        blk_mq_init_tags+0x18c/0x330
+[  242.232079][T10982]        blk_mq_alloc_map_and_rqs+0x20b/0xe90
+[  242.234217][T10982]        __blk_mq_alloc_map_and_rqs+0x12a/0x1f0
+[  242.236417][T10982]        __blk_mq_update_nr_hw_queues+0xa48/0x10a0
+[  242.238778][T10982]        blk_mq_update_nr_hw_queues+0x3e/0x60
+[  242.240907][T10982]        nbd_start_device+0x18a/0xd70
+[  242.242807][T10982]        nbd_genl_connect+0x1343/0x1bd0
+[  242.244779][T10982]        genl_family_rcv_msg_doit+0x1ff/0x2f0
+[  242.246933][T10982]        genl_rcv_msg+0x532/0x7e0
+[  242.248747][T10982]        netlink_rcv_skb+0x147/0x430
+[  242.250637][T10982]        genl_rcv+0x28/0x40
+[  242.252237][T10982]        netlink_unicast+0x6e3/0xa20
+[  242.254133][T10982]        netlink_sendmsg+0x89c/0xd80
+[  242.256058][T10982]        ____sys_sendmsg+0xa63/0xc20
+[  242.257953][T10982]        ___sys_sendmsg+0x11c/0x1b0
+[  242.259788][T10982]        __sys_sendmsg+0x150/0x200
+[  242.261655][T10982]        do_syscall_64+0x72/0xfa0
+[  242.263397][T10982]        entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  242.265643][T10982] 
+[  242.265643][T10982] -> #1 (&q->q_usage_counter(io)#49){++++}-{0:0}:
+[  242.268771][T10982]        blk_alloc_queue+0x61c/0x760
+[  242.270671][T10982]        blk_mq_alloc_queue+0x170/0x280
+[  242.272668][T10982]        __blk_mq_alloc_disk+0x2a/0x120
+[  242.274514][T10982]        nbd_dev_add+0x49a/0xbb0
+[  242.276282][T10982]        nbd_init+0x1a5/0x3e0
+[  242.278039][T10982]        do_one_initcall+0x10c/0x6b0
+[  242.279950][T10982]        kernel_init_freeable+0x5af/0x8b0
+[  242.281967][T10982]        kernel_init+0x1e/0x2d0
+[  242.283709][T10982]        ret_from_fork+0x669/0x7c0
+[  242.285575][T10982]        ret_from_fork_asm+0x1a/0x30
+[  242.287510][T10982] 
+[  242.287510][T10982] -> #0 (fs_reclaim){+.+.}-{0:0}:
+[  242.289975][T10982]        __lock_acquire+0x1653/0x2760
+[  242.291940][T10982]        lock_acquire+0x17b/0x340
+[  242.293711][T10982]        fs_reclaim_acquire+0x102/0x150
+[  242.295705][T10982]        prepare_alloc_pages+0x15f/0x600
+[  242.297651][T10982]        __alloc_frozen_pages_noprof+0x149/0x3a0
+[  242.299884][T10982]        __alloc_pages_noprof+0xc/0x1b0
+[  242.301935][T10982]        pcpu_populate_chunk+0x108/0xad0
+[  242.304001][T10982]        pcpu_alloc_noprof+0x92c/0x1490
+[  242.305970][T10982]        perf_trace_event_init+0x658/0xac0
+[  242.308032][T10982]        perf_uprobe_init+0x177/0x220
+[  242.309909][T10982]        perf_uprobe_event_init+0x103/0x190
+[  242.311997][T10982]        perf_try_init_event+0x140/0xa80
+[  242.313967][T10982]        perf_event_alloc.part.0+0x1141/0x4530
+[  242.316103][T10982]        __do_sys_perf_event_open+0x716/0x2c30
+[  242.318277][T10982]        do_syscall_64+0x72/0xfa0
+[  242.320098][T10982]        entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  242.322363][T10982] 
+[  242.322363][T10982] other info that might help us debug this:
+[  242.322363][T10982] 
+[  242.325957][T10982] Chain exists of:
+[  242.325957][T10982]   fs_reclaim --> &q->q_usage_counter(io)#49 --> pcpu_alloc_mutex
+[  242.325957][T10982] 
+[  242.330800][T10982]  Possible unsafe locking scenario:
+[  242.330800][T10982] 
+[  242.333269][T10982]        CPU0                    CPU1
+[  242.335115][T10982]        ----                    ----
+[  242.336981][T10982]   lock(pcpu_alloc_mutex);
+[  242.338579][T10982]                                lock(&q->q_usage_counter(io)#49);
+[  242.341375][T10982]                                lock(pcpu_alloc_mutex);
+[  242.343844][T10982]   lock(fs_reclaim);
+[  242.345300][T10982] 
+[  242.345300][T10982]  *** DEADLOCK ***
+[  242.345300][T10982] 
+[  242.348134][T10982] 4 locks held by syz.0.17/10982:
+[  242.349987][T10982]  #0: ffffffff9a60dcd0 (&pmus_srcu){.+.+}-{0:0}, at: __do_sys_perf_event_open+0x332/0x2c30
+[  242.353703][T10982]  #1: ffffffff9a60dcd0 (&pmus_srcu){.+.+}-{0:0}, at: perf_event_alloc.part.0+0xed6/0x4530
+[  242.357423][T10982]  #2: ffffffff8e05cf68 (event_mutex){+.+.}-{4:4}, at: perf_uprobe_init+0x16c/0x220
+[  242.360859][T10982]  #3: ffffffff8e131d08 (pcpu_alloc_mutex){+.+.}-{4:4}, at: pcpu_alloc_noprof+0xcd3/0x1490
+[  242.364372][T10982] 
+[  242.364372][T10982] stack backtrace:
+[  242.366525][T10982] CPU: 0 UID: 0 PID: 10982 Comm: syz.0.17 Not tainted 6.18.0-rc6 #1 PREEMPT(full) 
+[  242.366599][T10982] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  242.366646][T10982] Call Trace:
+[  242.366668][T10982]  <TASK>
+[  242.366691][T10982]  dump_stack_lvl+0x116/0x1b0
+[  242.366773][T10982]  print_circular_bug+0x274/0x340
+[  242.366868][T10982]  check_noncircular+0x12f/0x150
+[  242.366966][T10982]  __lock_acquire+0x1653/0x2760
+[  242.367072][T10982]  lock_acquire+0x17b/0x340
+[  242.367119][T10982]  ? prepare_alloc_pages+0x15f/0x600
+[  242.367191][T10982]  ? trace_sched_exit_tp+0xd1/0x120
+[  242.367267][T10982]  fs_reclaim_acquire+0x102/0x150
+[  242.367327][T10982]  ? prepare_alloc_pages+0x15f/0x600
+[  242.367395][T10982]  prepare_alloc_pages+0x15f/0x600
+[  242.367496][T10982]  ? _raw_spin_unlock_irqrestore+0x41/0x70
+[  242.367562][T10982]  __alloc_frozen_pages_noprof+0x149/0x3a0
+[  242.367659][T10982]  ? __pfx___alloc_frozen_pages_noprof+0x10/0x10
+[  242.367751][T10982]  ? __pfx___schedule+0x10/0x10
+[  242.367832][T10982]  __alloc_pages_noprof+0xc/0x1b0
+[  242.367923][T10982]  pcpu_populate_chunk+0x108/0xad0
+[  242.368032][T10982]  pcpu_alloc_noprof+0x92c/0x1490
+[  242.368108][T10982]  perf_trace_event_init+0x658/0xac0
+[  242.368191][T10982]  perf_uprobe_init+0x177/0x220
+[  242.368271][T10982]  perf_uprobe_event_init+0x103/0x190
+[  242.368349][T10982]  perf_try_init_event+0x140/0xa80
+[  242.368424][T10982]  perf_event_alloc.part.0+0x1141/0x4530
+[  242.368542][T10982]  ? perf_event_alloc.part.0+0x1027/0x4530
+[  242.368623][T10982]  ? alloc_fd+0x3bd/0x780
+[  242.368688][T10982]  ? __pfx_perf_event_alloc.part.0+0x10/0x10
+[  242.368771][T10982]  __do_sys_perf_event_open+0x716/0x2c30
+[  242.368835][T10982]  ? __pfx___do_sys_perf_event_open+0x10/0x10
+[  242.368927][T10982]  do_syscall_64+0x72/0xfa0
+[  242.368997][T10982]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  242.369055][T10982] RIP: 0033:0x7f9ecf3ae16d
+[  242.369129][T10982] Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  242.369184][T10982] RSP: 002b:00007fffd0a5ec28 EFLAGS: 00000246 ORIG_RAX: 000000000000012a
+[  242.369236][T10982] RAX: ffffffffffffffda RBX: 00007f9ecf5f5fa0 RCX: 00007f9ecf3ae16d
+[  242.369276][T10982] RDX: 0000000000000001 RSI: ffffffffffffffff RDI: 0000200000000100
+[  242.369312][T10982] RBP: 00007f9ecf4480f0 R08: 0000000000000009 R09: 0000000000000000
+[  242.369343][T10982] R10: ffffffffffffffff R11: 0000000000000246 R12: 0000000000000000
+[  242.369377][T10982] R13: 00007f9ecf5f5fac R14: 00007f9ecf5f5fa0 R15: 0000000000000000
+[  242.369467][T10982]  </TASK>
+[  242.694699][   T59] block nbd0: Receive control failed (result -32)
+[  242.694714][   T58] block nbd0: Receive control failed (result -32)
+[  243.084489][   T58] block nbd1: Receive control failed (result -32)
+[  243.087206][T10984] block nbd1: Receive control failed (result -32)
+[  243.424621][   T59] block nbd2: Receive control failed (result -32)
+[  243.426939][T10985] block nbd2: Receive control failed (result -32)
+[  243.573762][ T9846] Bluetooth: hci0: command tx timeout
+[  243.754528][   T59] block nbd3: Receive control failed (result -32)
+[  243.756790][T10985] block nbd3: Receive control failed (result -32)
+[  244.076410][T10984] block nbd4: Receive control failed (result -32)
+[  244.079626][   T58] block nbd4: Receive control failed (result -32)
+[  244.384780][   T59] block nbd5: Receive control failed (result -32)
+[  244.387282][T10985] block nbd5: Receive control failed (result -32)
+[  244.754618][T10985] block nbd6: Receive control failed (result -32)
+[  244.757090][   T59] block nbd6: Receive control failed (result -32)
+[  245.126381][   T58] block nbd7: Receive control failed (result -32)
+[  245.126571][T10984] block nbd7: Receive control failed (result -32)
+[  245.434596][T10984] block nbd8: Receive control failed (result -32)
+[  245.437001][   T58] block nbd8: Receive control failed (result -32)
+[  245.794526][   T58] block nbd9: Receive control failed (result -32)
+[  245.797024][T10984] block nbd9: Receive control failed (result -32)
+[  246.215252][   T59] block nbd10: Receive control failed (result -32)
+[  246.217641][T10985] block nbd10: Receive control failed (result -32)
+[  246.514568][T10984] block nbd11: Receive control failed (result -32)
+[  246.514797][   T58] block nbd11: Receive control failed (result -32)
+[  246.855185][   T58] block nbd12: Receive control failed (result -32)
+[  246.855261][T10984] block nbd12: Receive control failed (result -32)
+2025/11/25 15:11:13 executed programs: 15
+[  247.234604][T10984] block nbd13: Receive control failed (result -32)
+[  247.237075][   T58] block nbd13: Receive control failed (result -32)
+[  247.575190][T10984] block nbd14: Receive control failed (result -32)
+[  247.577722][   T58] block nbd14: Receive control failed (result -32)
+[  247.944631][   T58] block nbd15: Receive control failed (result -32)
+[  247.947769][T10984] block nbd15: Receive control failed (result -32)
+[  248.435015][T10984] block nbd16: Receive control failed (result -32)
+[  248.437527][   T58] block nbd16: Receive control failed (result -32)
+[  248.804430][   T58] block nbd17: Receive control failed (result -32)
+[  248.806838][T10984] block nbd17: Receive control failed (result -32)
+[  249.154263][T10985] block nbd18: Receive control failed (result -32)
+[  249.156466][   T59] block nbd18: Receive control failed (result -32)
+[  249.484489][T10985] block nbd19: Receive control failed (result -32)
+[  249.486005][   T59] block nbd19: Receive control failed (result -32)
+[  249.805797][   T59] block nbd20: Receive control failed (result -32)
+[  249.805999][T10985] block nbd20: Receive control failed (result -32)
+[  250.214657][   T59] block nbd21: Receive control failed (result -32)
+[  250.217127][T10985] block nbd21: Receive control failed (result -32)
+[  250.585906][   T59] block nbd22: Receive control failed (result -32)
+[  250.650206][T10985] block nbd22: Receive control failed (result -32)
+[  251.074201][   T59] block nbd23: Receive control failed (result -32)
+[  251.075822][T10985] block nbd23: Receive control failed (result -32)
+[  251.404751][   T59] block nbd24: Receive control failed (result -32)
+[  251.407282][T10985] block nbd24: Receive control failed (result -32)
+[  251.834487][T10985] block nbd25: Receive control failed (result -32)
+[  251.837864][   T59] block nbd25: Receive control failed (result -32)
+
+VM DIAGNOSIS:
+23:11:08  Registers:
+info registers vcpu 0
+RAX=0000000000000031 RBX=00000000000003f8 RCX=0000000000000000 RDX=00000000000003f8
+RSI=ffffffff851bd105 RDI=ffffffff9a8b54c0 RBP=ffffffff9a8b5480 RSP=ffffc9000639f1a8
+R8 =0000000000000000 R9 =ffffed1020b5a046 R10=0000000000000000 R11=205d323839303154
+R12=0000000000000000 R13=0000000000000031 R14=ffffffff9a8b5480 R15=ffffffff851bd0a0
+RIP=ffffffff851bd12f RFL=00000002 [-------] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 00005555609a5500 ffffffff 00c00000
+GS =0000 ffff8880cf31c000 ffffffff 00c00000
+LDT=0000 0000000000000000 ffffffff 00c00000
+TR =0040 fffffe0000003000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe0000001000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=000055a1ea4096b0 CR3=0000000029819000 CR4=00752ef0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000ffff0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+Opmask00=0000000028400001 Opmask01=0000000004008004 Opmask02=0000000000400400 Opmask03=0000000020000000
+Opmask04=0000000000000000 Opmask05=0000000000000000 Opmask06=0000000000000000 Opmask07=0000000000000000
+ZMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007ffe41551180 0000003000000028
+ZMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffff0f0e0d0c0b 0a09080706050403
+ZMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 696e656420737365 636341002f737973
+ZMM04=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 000000ff00000000
+ZMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ff00000000000000 0000000000000000
+ZMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 6464646464646455 6464646464645455
+ZMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 08080d0f02164b52 1d0c144b55555654
+ZMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM16=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM17=0000000000000000 0000000000000000 0000000000000000 0000000000000000 2525252525252525 2525252525252525 2525252525252525 2525252525252525
+ZMM18=0000000000000000 0000000000000000 0000000000000000 0000000000000000 6e49006d25203a27 732527206b6e696c 2064616572206f74 2064656c69614600
+ZMM19=0000000000000000 0000000000000000 0000000000000000 0000000000000000 4b49004800051f02 560002054e4b4c49 0541444057054a51 054140494c444600
+ZMM20=0000000000000000 0000000000000000 0000000000000000 0000000000000000 000055cdc928d580 0000000000000000 0000000000000000 0000000000000000
+ZMM21=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000110 000000000000ff00 00020102010000ff 0000000000000000
+ZMM22=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000100000007 000055cdc9268cc0
+ZMM23=0000000000000000 0000000000000000 0000000000000000 0000000000000000 000055cdc9262480 00000008ffffffff 000055cdc92a0c00 000055cdc928ef20
+ZMM24=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000300000005 000055cdc92aadd0 000055cdc929fe00 0000000600000002
+ZMM25=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM26=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM27=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM28=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM29=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM30=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM31=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+info registers vcpu 1
+RAX=00000000000247dc RBX=0000000000000001 RCX=ffffffff8b297594 RDX=ffffed1026bc665e
+RSI=0000000000000001 RDI=ffffffff8190fe2b RBP=dffffc0000000000 RSP=ffffc9000016fde0
+R8 =0000000000000000 R9 =ffffed1026bc665d R10=ffff888135e332eb R11=0000000000000000
+R12=0000000000000001 R13=ffffffff903afbd0 R14=0000000000000000 R15=0000000000000000
+RIP=ffffffff8b295e5e RFL=000002c2 [--SZ---] CPL=0 II=0 A20=1 SMM=0 HLT=1
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 0000000000000000 ffffffff 00c00000
+GS =0000 ffff8881a291c000 ffffffff 00c00000
+LDT=0000 0000000000000000 00000000 00000000
+TR =0040 fffffe000004a000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe0000048000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=000055cdc9280090 CR3=000000002aa51000 CR4=00752ef0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000ffff0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+Opmask00=00000000fefeff80 Opmask01=0000000000004211 Opmask02=0000000000400400 Opmask03=0000000020000000
+Opmask04=0000000000000000 Opmask05=0000000000000000 Opmask06=0000000000000000 Opmask07=0000000000000000
+ZMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 000000696e656420 737365636341002f
+ZMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffff0f0e0d0c0b 0a09080706050403
+ZMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 696e656420737365 636341002f737973
+ZMM04=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000ff0000 00000000ff000000
+ZMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000ff0000
+ZMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000ff0000 00000000ff000000
+ZMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffffffffffff00 ffffffffffff0000
+ZMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 646431a9ad427474 646431a9ad4edd44
+ZMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 6464646464646425 6464646464645455
+ZMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM16=0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffffffffffffff ffffffffffffffff ffffffffffffffff ffffffffffffffff
+ZMM17=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000100000004 000055cdc928cf10
+ZMM18=0000000000000000 0000000000000000 0000000000000000 0000000000000000 6b7369643d455059 5456454400306462 6e2f7665642f3d45 4d414e564544006b
+ZMM19=0000000000000000 0000000000000000 0000000000000000 0000000000000000 4e495f4345535500 33303430313d4d55 4e5145530039343d 5145534b53494400
+ZMM20=0000000000000000 0000000000000000 0000000000000000 0000000000000000 00000000003a646d 65747379733a3d53 47415400303d524f 4e494d0033343d52
+ZMM21=0000000000000000 0000000000000000 0000000000000000 0000000000000000 4f4a414d00373839 3538353034313d44 455a494c41495449 4e495f4345535500
+ZMM22=0000000000000000 0000000000000000 0000000000000000 0000000000000000 33303430313d4d55 4e5145530039343d 5145534b53494400 6b7369643d455059
+ZMM23=0000000000000000 0000000000000000 0000000000000000 0000000000000000 5456454400306462 6e2f7665642f3d45 4d414e564544006b 636f6c623d4d4554
+ZMM24=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000110 000055cdc92d0101 020100ffff000000 0000000700000002
+ZMM25=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM26=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM27=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM28=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM29=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM30=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM31=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
