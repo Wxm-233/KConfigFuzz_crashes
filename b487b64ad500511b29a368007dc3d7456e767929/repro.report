@@ -1,0 +1,49 @@
+loop0: detected capacity change from 0 to 4267
+------------[ cut here ]------------
+strnlen: detected buffer overflow: 65 byte read of buffer size 64
+WARNING: CPU: 0 PID: 10942 at lib/string_helpers.c:1035 __fortify_report+0x9a/0xd0 lib/string_helpers.c:1035
+Modules linked in:
+CPU: 0 UID: 0 PID: 10942 Comm: syz.0.17 Not tainted 6.18.0-rc6 #1 PREEMPT(full) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:__fortify_report+0x9a/0xd0 lib/string_helpers.c:1035
+Code: af 8b 49 c7 c5 40 c7 af 8b 4c 0f 45 e8 e8 6e 42 20 fd 49 89 e8 4c 89 e2 4c 89 f6 4c 89 e9 48 c7 c7 c0 c7 af 8b e8 a6 59 df fc <0f> 0b 5b 5d 41 5c 41 5d 41 5e e9 47 91 91 06 48 89 de 48 c7 c7 60
+RSP: 0018:ffffc90003a079b8 EFLAGS: 00010282
+RAX: 0000000000000000 RBX: 0000000000000001 RCX: ffffffff817a63a9
+RDX: ffff88801e30a540 RSI: ffffffff817a63b6 RDI: 0000000000000001
+RBP: 0000000000000040 R08: 0000000000000001 R09: fffff52000740eee
+R10: 0000000000000001 R11: 0000000000000001 R12: 0000000000000041
+R13: ffffffff8bafc740 R14: ffffffff8bafd100 R15: ffff88802b099400
+FS:  00007f25b5ca8640(0000) GS:ffff8880cf31c000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f3d5474f4f0 CR3: 000000011c1e8000 CR4: 0000000000752ef0
+PKRU: 00000000
+Call Trace:
+ <TASK>
+ __fortify_panic+0x23/0x30 lib/string_helpers.c:1042
+ strnlen include/linux/fortify-string.h:235 [inline]
+ sized_strscpy include/linux/fortify-string.h:309 [inline]
+ parse_apply_sb_mount_options fs/ext4/super.c:2486 [inline]
+ __ext4_fill_super fs/ext4/super.c:5306 [inline]
+ ext4_fill_super+0x397d/0xb440 fs/ext4/super.c:5736
+ get_tree_bdev_flags+0x389/0x620 fs/super.c:1691
+ vfs_get_tree+0x97/0x380 fs/super.c:1751
+ fc_mount+0x1a/0x220 fs/namespace.c:1208
+ do_new_mount_fc fs/namespace.c:3651 [inline]
+ do_new_mount fs/namespace.c:3727 [inline]
+ path_mount+0x768/0x2080 fs/namespace.c:4037
+ do_mount fs/namespace.c:4050 [inline]
+ __do_sys_mount fs/namespace.c:4238 [inline]
+ __se_sys_mount fs/namespace.c:4215 [inline]
+ __x64_sys_mount+0x293/0x310 fs/namespace.c:4215
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0x72/0xfa0 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+RIP: 0033:0x7f25b4daffde
+Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f25b5ca7da8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+RAX: ffffffffffffffda RBX: 0000000000000b7e RCX: 00007f25b4daffde
+RDX: 0000200000000b80 RSI: 0000200000000bc0 RDI: 00007f25b5ca7e00
+RBP: 00007f25b5ca7e40 R08: 00007f25b5ca7e40 R09: 0000000000000004
+R10: 0000000000000004 R11: 0000000000000246 R12: 0000200000000b80
+R13: 0000200000000bc0 R14: 00007f25b5ca7e00 R15: 0000200000000400
+ </TASK>
