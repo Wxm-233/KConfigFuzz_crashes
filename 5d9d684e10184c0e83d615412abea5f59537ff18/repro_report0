@@ -1,0 +1,170 @@
+executing program
+[  244.029283][ T9772] loop0: detected capacity change from 0 to 64
+[  429.079693][   T35] INFO: task 5d9d:9776 blocked for more than 143 seconds.
+[  429.080206][   T35]       Not tainted 6.18.0-12356-gc2f2b01b74be #2
+[  429.080622][   T35] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[  429.081159][   T35] task:5d9d            state:D stack:29304 pid:9776  tgid:9771  ppid:9770   task_flags:0x400040 flags:0x00080002
+[  429.081931][   T35] Call Trace:
+[  429.082153][   T35]  <TASK>
+[  429.082350][   T35]  ? __schedule+0xf44/0x5f60
+[  429.084746][   T35]  __schedule+0xfc4/0x5f60
+[  429.085042][   T35]  ? __lock_acquire+0x43c/0x26c0
+[  429.085375][   T35]  ? __pfx___schedule+0x10/0x10
+[  429.085692][   T35]  ? schedule+0x2d4/0x3a0
+[  429.085977][   T35]  schedule+0xe5/0x3a0
+[  429.086248][   T35]  schedule_preempt_disabled+0x13/0x30
+[  429.086603][   T35]  rwsem_down_read_slowpath+0x5d7/0xd20
+[  429.086966][   T35]  ? __pfx_rwsem_down_read_slowpath+0x10/0x10
+[  429.087371][   T35]  down_read+0xef/0x460
+[  429.087648][   T35]  ? try_to_unlazy+0x2d3/0x680
+[  429.087961][   T35]  ? __pfx_down_read+0x10/0x10
+[  429.088276][   T35]  ? lookup_fast+0x157/0x5e0
+[  429.088588][   T35]  path_openat+0x15d5/0x2cb0
+[  429.088902][   T35]  ? __pfx_path_openat+0x10/0x10
+[  429.089232][   T35]  ? __lock_acquire+0x43c/0x26c0
+[  429.102022][   T35]  do_filp_open+0x1f7/0x460
+[  429.106362][   T35]  ? __pfx_do_filp_open+0x10/0x10
+[  429.108256][   T35]  ? __virt_addr_valid+0x371/0x610
+[  429.109506][   T35]  ? find_held_lock+0x2b/0x80
+[  429.110834][   T35]  ? alloc_fd+0x3bd/0x780
+[  429.111659][   T35]  ? alloc_fd+0x3bd/0x780
+[  429.112476][   T35]  do_sys_openat2+0x106/0x230
+[  429.113348][   T35]  ? __pfx_do_sys_openat2+0x10/0x10
+[  429.114335][   T35]  __x64_sys_openat+0x13f/0x1f0
+[  429.115227][   T35]  ? __pfx___x64_sys_openat+0x10/0x10
+[  429.116223][   T35]  do_syscall_64+0x72/0xf80
+[  429.117071][   T35]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  429.118144][   T35] RIP: 0033:0x7fa61a417fc9
+[  429.118959][   T35] RSP: 002b:00007fa61a2fdea8 EFLAGS: 00000246 ORIG_RAX: 0000000000000101
+[  429.124280][   T35] RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007fa61a417fc9
+[  429.125729][   T35] RDX: 0000000000000000 RSI: 0000200000004280 RDI: ffffffffffffff9c
+[  429.127127][   T35] RBP: 00007fa61a2fdec0 R08: 00007fa61a2fe700 R09: 0000000000000000
+[  429.128540][   T35] R10: 0000000000000000 R11: 0000000000000246 R12: 00007fffc48abe1e
+[  429.130291][   T35] R13: 00007fffc48abe1f R14: 00007fa61a2fdfc0 R15: 0000000000022000
+[  429.131731][   T35]  </TASK>
+[  429.132565][   T35] INFO: task 5d9d:9776 <reader> blocked on an rw-semaphore likely owned by task 5d9d:9772 <writer>
+[  429.135195][   T35] task:5d9d            state:R  running task     stack:24496 pid:9772  tgid:9771  ppid:9770   task_flags:0x400140 flags:0x00080003
+[  429.137760][   T35] Call Trace:
+[  429.138510][   T35]  <TASK>
+[  429.139063][   T35]  ? preempt_schedule_irq+0x51/0x90
+[  429.141279][   T35]  ? irqentry_exit+0x1ae/0x780
+[  429.142191][   T35]  ? asm_sysvec_call_function_single+0x1a/0x20
+[  429.143307][   T35]  ? stack_trace_save+0x8d/0xc0
+[  429.146099][   T35]  ? kernel_text_address+0x41/0x90
+[  429.149053][   T35]  ? __kernel_text_address+0xd/0x40
+[  429.151841][   T35]  ? do_rmdir+0x304/0x520
+[  429.152619][   T35]  ? __read_once_word_nocheck+0x3/0x10
+[  429.153534][   T35]  ? unwind_next_frame+0xb95/0x20b0
+[  429.154401][   T35]  ? lookup_one_qstr_excl+0x1d4/0x260
+[  429.155473][   T35]  ? __pfx_stack_trace_consume_entry+0x10/0x10
+[  429.156602][   T35]  ? arch_stack_walk+0x86/0xf0
+[  429.157366][   T35]  ? __kasan_slab_alloc+0x87/0x90
+[  429.158170][   T35]  ? stack_trace_save+0x8e/0xc0
+[  429.158932][   T35]  ? __pfx_stack_trace_save+0x10/0x10
+[  429.162248][   T35]  ? __pfx_css_rstat_updated+0x10/0x10
+[  429.163125][   T35]  ? is_bpf_text_address+0x96/0x1a0
+[  429.163939][   T35]  ? bdev_getblk+0x2fd/0x660
+[  429.164677][   T35]  ? __lock_acquire+0x43c/0x26c0
+[  429.165425][   T35]  ? __lock_acquire+0x43c/0x26c0
+[  429.166167][   T35]  ? __slab_alloc.constprop.0+0x66/0x110
+[  429.167002][   T35]  ? kmem_cache_alloc_noprof+0x28b/0x8c0
+[  429.167844][   T35]  ? filemap_get_entry+0x114/0x3b0
+[  429.168609][   T35]  ? __create_object+0x1d/0x80
+[  429.169349][   T35]  ? kmem_cache_alloc_noprof+0x4e9/0x8c0
+[  429.171102][   T35]  ? __pfx_filemap_add_folio+0x10/0x10
+[  429.171880][   T35]  ? alloc_buffer_head+0x24/0x160
+[  429.172586][   T35]  ? alloc_buffer_head+0x24/0x160
+[  429.173305][   T35]  ? folio_alloc_buffers+0x2ca/0x860
+[  429.174158][   T35]  ? bdev_getblk+0x2fd/0x660
+[  429.174951][   T35]  ? __bread_gfp+0x85/0x3c0
+[  429.175580][   T35]  ? bfs_find_entry.isra.0+0x315/0x430
+[  429.177152][   T35]  ? bfs_lookup+0x1ac/0x2b0
+[  429.177783][   T35]  ? __pfx_bfs_lookup+0x10/0x10
+[  429.178599][   T35]  ? do_raw_spin_unlock+0x174/0x230
+[  429.179509][   T35]  ? _raw_spin_unlock+0x28/0x50
+[  429.181209][   T35]  ? lookup_one_qstr_excl+0x1d4/0x260
+[  429.181957][   T35]  ? mnt_want_write+0x166/0x440
+[  429.200208][   T35]  ? do_rmdir+0x304/0x520
+[  429.200772][   T35]  ? __pfx_do_rmdir+0x10/0x10
+[  429.201351][   T35]  ? getname_flags.part.0+0x1cc/0x560
+[  429.201959][   T35]  ? __x64_sys_rmdir+0xc7/0x110
+[  429.202529][   T35]  ? do_syscall_64+0x72/0xf80
+[  429.203071][   T35]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  429.203760][   T35]  </TASK>
+[  429.210659][   T35] 
+[  429.210659][   T35] Showing all locks held in the system:
+[  429.211433][   T35] 1 lock held by khungtaskd/35:
+[  429.211923][   T35]  #0: ffffffff8e1cc7a0 (rcu_read_lock){....}-{1:3}, at: debug_show_all_locks+0x36/0x1c0
+[  429.213016][   T35] 1 lock held by kswapd0/88:
+[  429.213557][   T35] 2 locks held by kswapd1/97:
+[  429.214136][   T35] 1 lock held by systemd-journal/5208:
+[  429.214789][   T35] 1 lock held by in:imklog/9286:
+[  429.215261][   T35]  #0: ffff88803041b7b8 (&f->f_pos_lock){+.+.}-{4:4}, at: fdget_pos+0x2a0/0x370
+[  429.216149][   T35] 4 locks held by 5d9d/9772:
+[  429.216597][   T35] 1 lock held by 5d9d/9776:
+[  429.217032][   T35]  #0: ffff88802ea1c160 (&type->i_mutex_dir_key#8){.+.+}-{4:4}, at: path_openat+0x15d5/0x2cb0
+[  429.218176][   T35] 
+[  429.218430][   T35] =============================================
+[  429.218430][   T35] 
+[  429.219338][   T35] NMI backtrace for cpu 0
+[  429.219356][   T35] CPU: 0 UID: 0 PID: 35 Comm: khungtaskd Not tainted 6.18.0-12356-gc2f2b01b74be #2 PREEMPT(full) 
+[  429.219374][   T35] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1 04/01/2014
+[  429.219384][   T35] Call Trace:
+[  429.219390][   T35]  <TASK>
+[  429.219396][   T35]  dump_stack_lvl+0x116/0x1b0
+[  429.219418][   T35]  nmi_cpu_backtrace+0x2a0/0x350
+[  429.219441][   T35]  ? __pfx_nmi_raise_cpu_backtrace+0x10/0x10
+[  429.219465][   T35]  nmi_trigger_cpumask_backtrace+0x29c/0x300
+[  429.219489][   T35]  sys_info+0x133/0x180
+[  429.219508][   T35]  watchdog+0x1214/0x1600
+[  429.219531][   T35]  ? __pfx_watchdog+0x10/0x10
+[  429.219552][   T35]  kthread+0x446/0x890
+[  429.219573][   T35]  ? __pfx_kthread+0x10/0x10
+[  429.219594][   T35]  ? __pfx_kthread+0x10/0x10
+[  429.219617][   T35]  ? _raw_spin_unlock_irq+0x23/0x50
+[  429.219633][   T35]  ? __pfx_kthread+0x10/0x10
+[  429.219656][   T35]  ret_from_fork+0x95b/0xae0
+[  429.219679][   T35]  ? __pfx_ret_from_fork+0x10/0x10
+[  429.219702][   T35]  ? __pfx_kthread+0x10/0x10
+[  429.219724][   T35]  ? __switch_to+0x79b/0x10a0
+[  429.219741][   T35]  ? __pfx_kthread+0x10/0x10
+[  429.219764][   T35]  ret_from_fork_asm+0x1a/0x30
+[  429.219798][   T35]  </TASK>
+[  429.231077][   T35] Sending NMI from CPU 0 to CPUs 1:
+[  429.231648][    C1] NMI backtrace for cpu 1
+[  429.231657][    C1] CPU: 1 UID: 0 PID: 25 Comm: kworker/1:0H Not tainted 6.18.0-12356-gc2f2b01b74be #2 PREEMPT(full) 
+[  429.231670][    C1] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1 04/01/2014
+[  429.231677][    C1] Workqueue: kblockd blk_mq_run_work_fn
+[  429.231696][    C1] RIP: 0010:check_preemption_disabled+0x41/0x170
+[  429.231710][    C1] Code: 09 1a 47 08 65 8b 1d fe 19 47 08 81 e3 ff ff ff 7f 31 ff 89 de 0f 1f 44 00 00 85 db 74 15 0f 1f 44 00 00 44 89 e0 5b 5d 41 5c <41> 5d 41 5e e9 c6 29 03 00 0f 1f 44 00 00 9c 5b 81 e3 00 02 00 00
+[  429.231719][    C1] RSP: 0000:ffffc900001d7b48 EFLAGS: 00000002
+[  429.231727][    C1] RAX: 0000000000000001 RBX: 0000000000000000 RCX: 0000000000000001
+[  429.231733][    C1] RDX: 0000000000000000 RSI: 0000000000000001 RDI: 0000000000000000
+[  429.231738][    C1] RBP: ffff888135e3a120 R08: 0000000000000000 R09: fffffbfff35e6bf0
+[  429.231745][    C1] R10: 0000000000000001 R11: 0000000000000001 R12: ffff888100a94b00
+[  429.231750][    C1] R13: ffffffff8d84e454 R14: 00000000ffffffff R15: ffff888100a95638
+[  429.231757][    C1] FS:  0000000000000000(0000) GS:ffff8881a2579000(0000) knlGS:0000000000000000
+[  429.231767][    C1] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  429.231773][    C1] CR2: 00007f3e476b2ee0 CR3: 000000001219f000 CR4: 0000000000752ef0
+[  429.231780][    C1] PKRU: 55555554
+[  429.231783][    C1] Call Trace:
+[  429.231786][    C1]  <TASK>
+[  429.231790][    C1]  lock_is_held_type+0xde/0x140
+[  429.231804][    C1]  kick_pool+0x2e9/0x7c0
+[  429.231817][    C1]  process_one_work+0x6a3/0x1af0
+[  429.231835][    C1]  ? __pfx_process_one_work+0x10/0x10
+[  429.231851][    C1]  ? assign_work+0x196/0x240
+[  429.231865][    C1]  worker_thread+0x67e/0xe90
+[  429.231882][    C1]  ? __pfx_worker_thread+0x10/0x10
+[  429.231897][    C1]  kthread+0x446/0x890
+[  429.231910][    C1]  ? __pfx_kthread+0x10/0x10
+[  429.231923][    C1]  ? __pfx_kthread+0x10/0x10
+[  429.231936][    C1]  ? _raw_spin_unlock_irq+0x23/0x50
+[  429.231946][    C1]  ? __pfx_kthread+0x10/0x10
+[  429.231960][    C1]  ret_from_fork+0x95b/0xae0
+[  429.231975][    C1]  ? __pfx_ret_from_fork+0x10/0x10
+[  429.231988][    C1]  ? __pfx_kthread+0x10/0x10
+[  429.232002][    C1]  ? __switch_to+0x79b/0x10a0
+[  429.232013][    C1]  ? __pfx_kthread+0x10/0x10
+[  429.232026][    C1]  ret_from_fork_asm+0x1a/0x30
+[  429.232044][    C1]  </TASK>

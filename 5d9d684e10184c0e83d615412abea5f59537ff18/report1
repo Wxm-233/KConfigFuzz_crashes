@@ -1,0 +1,188 @@
+INFO: task syz.5.71:14268 blocked for more than 143 seconds.
+      Not tainted 6.18.0-rc7 #2
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.5.71        state:D
+ stack:29248 pid:14268 tgid:14254 ppid:9842   task_flags:0x400040 flags:0x00080002
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5325 [inline]
+ __schedule+0x1040/0x5b70 kernel/sched/core.c:6929
+ __schedule_loop kernel/sched/core.c:7011 [inline]
+ schedule+0xe5/0x3a0 kernel/sched/core.c:7026
+ schedule_preempt_disabled+0x13/0x30 kernel/sched/core.c:7083
+ rwsem_down_write_slowpath+0x40d/0x1400 kernel/locking/rwsem.c:1185
+ __down_write_common kernel/locking/rwsem.c:1317 [inline]
+ __down_write kernel/locking/rwsem.c:1326 [inline]
+ down_write+0x1d3/0x200 kernel/locking/rwsem.c:1591
+ inode_lock include/linux/fs.h:980 [inline]
+ open_last_lookups fs/namei.c:3892 [inline]
+ path_openat+0xc02/0x2870 fs/namei.c:4131
+ do_filp_open+0x1f7/0x460 fs/namei.c:4161
+ do_sys_openat2+0x104/0x1b0 fs/open.c:1437
+ __do_sys_openat2+0x1a5/0x2b0 fs/open.c:1495
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0x72/0xfa0 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+RIP: 0033:0x7f86e89ae16d
+RSP: 002b:00007f86e9812f98 EFLAGS: 00000246 ORIG_RAX: 00000000000001b5
+RAX: ffffffffffffffda RBX: 00007f86e8bf6090 RCX: 00007f86e89ae16d
+RDX: 0000200000000140 RSI: 0000200000000100 RDI: ffffffffffffff9c
+RBP: 00007f86e8a480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000018 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f86e8bf6128 R14: 00007f86e8bf6090 R15: 00007f86e97f3000
+ </TASK>
+INFO: task syz.5.71:14268 <writer> blocked on an rw-semaphore likely owned by task syz.5.71:14255 <writer>
+task:syz.5.71        state:R  running task     stack:25096 pid:14255 tgid:14254 ppid:9842   task_flags:0x400140 flags:0x00080003
+Call Trace:
+ <TASK>
+ </TASK>
+
+Showing all locks held in the system:
+1 lock held by khungtaskd/44:
+ #0: ffffffff8dfc80a0 (rcu_read_lock){....}-{1:3}, at: rcu_lock_acquire include/linux/rcupdate.h:331 [inline]
+ #0: ffffffff8dfc80a0 (rcu_read_lock){....}-{1:3}, at: rcu_read_lock include/linux/rcupdate.h:867 [inline]
+ #0: ffffffff8dfc80a0 (rcu_read_lock){....}-{1:3}, at: debug_show_all_locks+0x36/0x1c0 kernel/locking/lockdep.c:6775
+5 locks held by kworker/2:2/1965:
+ #0: ffff8881017b3948 ((wq_completion)usb_hub_wq){+.+.}-{0:0}, at: process_one_work+0x128a/0x1b40 kernel/workqueue.c:3238
+ #1: ffffc9000922fd10 ((work_completion)(&hub->events)){+.+.}-{0:0}, at: process_one_work+0x8ea/0x1b40 kernel/workqueue.c:3239
+ #2: ffff888109417198 (&dev->mutex){....}-{4:4}, at: device_lock include/linux/device.h:914 [inline]
+ #2: ffff888109417198 (&dev->mutex){....}-{4:4}, at: hub_event+0x1af/0x4d70 drivers/usb/core/hub.c:5898
+ #3: ffff88802da20198 (&dev->mutex){....}-{4:4}, at: device_lock include/linux/device.h:914 [inline]
+ #3: ffff88802da20198 (&dev->mutex){....}-{4:4}, at: __device_attach+0x7d/0x4c0 drivers/base/dd.c:1006
+ #4: ffff8880312c6160 (&dev->mutex){....}-{4:4}, at: device_lock include/linux/device.h:914 [inline]
+ #4: ffff8880312c6160 (&dev->mutex){....}-{4:4}, at: __device_attach+0x7d/0x4c0 drivers/base/dd.c:1006
+1 lock held by systemd-udevd/5240:
+1 lock held by in:imklog/9302:
+5 locks held by kworker/3:3/9690:
+ #0: ffff8881017b3948 ((wq_completion)usb_hub_wq){+.+.}-{0:0}, at: process_one_work+0x128a/0x1b40 kernel/workqueue.c:3238
+ #1: ffffc9000f8d7d10 ((work_completion)(&hub->events)){+.+.}-{0:0}, at: process_one_work+0x8ea/0x1b40 kernel/workqueue.c:3239
+ #2: ffff888102f5b198 (&dev->mutex){....}-{4:4}, at: device_lock include/linux/device.h:914 [inline]
+ #2: ffff888102f5b198 (&dev->mutex){....}-{4:4}, at: hub_event+0x1af/0x4d70 drivers/usb/core/hub.c:5898
+ #3: ffff88802ea59198 (&dev->mutex){....}-{4:4}, at: device_lock include/linux/device.h:914 [inline]
+ #3: ffff88802ea59198 (&dev->mutex){....}-{4:4}, at: __device_attach+0x7d/0x4c0 drivers/base/dd.c:1006
+ #4: ffff88802ea5c160 (&dev->mutex){....}-{4:4}, at: device_lock include/linux/device.h:914 [inline]
+ #4: ffff88802ea5c160 (&dev->mutex){....}-{4:4}, at: __device_attach+0x7d/0x4c0 drivers/base/dd.c:1006
+1 lock held by syz-executor/9879:
+ #0: ffffffff8dfd3cf8 (rcu_state.exp_mutex){+.+.}-{4:4}, at: exp_funnel_lock+0x1a3/0x3b0 kernel/rcu/tree_exp.h:343
+3 locks held by syz.5.71/14255:
+2 locks held by syz.5.71/14268:
+ #0: ffff88802e986420 (sb_writers#26){.+.+}-{0:0}, at: open_last_lookups fs/namei.c:3884 [inline]
+ #0: ffff88802e986420 (sb_writers#26){.+.+}-{0:0}, at: path_openat+0x1cef/0x2870 fs/namei.c:4131
+ #1: ffff888123d00160 (&type->i_mutex_dir_key#16){++++}-{4:4}, at: inode_lock include/linux/fs.h:980 [inline]
+ #1: ffff888123d00160 (&type->i_mutex_dir_key#16){++++}-{4:4}, at: open_last_lookups fs/namei.c:3892 [inline]
+ #1: ffff888123d00160 (&type->i_mutex_dir_key#16){++++}-{4:4}, at: path_openat+0xc02/0x2870 fs/namei.c:4131
+4 locks held by syz-executor/14928:
+1 lock held by syz.8.645/22788:
+ #0: ffff88805f3260e0 (&type->s_umount_key#62/1){+.+.}-{4:4}, at: alloc_super+0x1e1/0xb80 fs/super.c:344
+5 locks held by syz.0.650/22905:
+
+=============================================
+
+NMI backtrace for cpu 2
+CPU: 2 UID: 0 PID: 44 Comm: khungtaskd Not tainted 6.18.0-rc7 #2 PREEMPT(full) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x116/0x1b0 lib/dump_stack.c:120
+ nmi_cpu_backtrace+0x2a0/0x350 lib/nmi_backtrace.c:113
+ nmi_trigger_cpumask_backtrace+0x29c/0x300 lib/nmi_backtrace.c:62
+ trigger_all_cpu_backtrace include/linux/nmi.h:160 [inline]
+ check_hung_uninterruptible_tasks kernel/hung_task.c:332 [inline]
+ watchdog+0x11ad/0x14e0 kernel/hung_task.c:495
+ kthread+0x446/0x890 kernel/kthread.c:463
+ ret_from_fork+0x669/0x7c0 arch/x86/kernel/process.c:158
+ ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entry_64.S:245
+ </TASK>
+Sending NMI from CPU 2 to CPUs 0-1,3:
+NMI backtrace for cpu 1
+CPU: 1 UID: 0 PID: 5226 Comm: systemd-journal Not tainted 6.18.0-rc7 #2 PREEMPT(full) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0033:0x7fee5c1d3c40
+Code: 0f 84 dc 01 00 00 48 83 7c 24 70 00 0f 84 f8 01 00 00 89 cd 83 f9 08 0f 87 15 02 00 00 89 c8 45 89 c7 4d 89 cd 48 8b 7c c3 18 <48> 85 ff 74 5b 3b 4f 08 0f 85 c2 02 00 00 48 8b 47 10 48 85 c0 74
+RSP: 002b:00007ffd1ef382e0 EFLAGS: 00000297
+RAX: 0000000000000001 RBX: 000055da14cbd920 RCX: 0000000000000001
+RDX: 0000000000000003 RSI: 000055da14cc3ef0 RDI: 000055da14cc35b0
+RBP: 0000000000000001 R08: 0000000000000000 R09: 00000000003fb8c0
+R10: 00007fee5c236ef4 R11: 000055da14cc2aa0 R12: 000055da14cc3ef0
+R13: 00000000003fb8c0 R14: 00000000003fb8c0 R15: 0000000000000000
+FS:  00007fee5c297900 GS:  0000000000000000
+NMI backtrace for cpu 0
+CPU: 0 UID: 0 PID: 15 Comm: ksoftirqd/0 Not tainted 6.18.0-rc7 #2 PREEMPT(full) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:unwind_next_frame+0x4be/0x20b0 arch/x86/kernel/unwind_orc.c:512
+Code: 0f 9e c2 84 c0 0f 95 c0 84 c2 0f 85 8f 15 00 00 4c 89 f2 44 0f b6 79 05 48 b8 00 00 00 00 00 fc ff df 48 c1 ea 03 0f b6 04 02 <4c> 89 f2 41 c0 ef 03 83 e2 07 41 83 e7 01 38 d0 7f 08 84 c0 0f 85
+RSP: 0000:ffffc9000011f860 EFLAGS: 00000a03
+RAX: 0000000000000000 RBX: 0000000000000001 RCX: ffffffff90d96b08
+RDX: 1ffff92000023f20 RSI: 0000000000000001 RDI: ffffffff905714cc
+RBP: ffffc9000011f918 R08: ffffffff90d96b0c R09: 0000000000000001
+R10: 00000000000089ca R11: 00000000000a3475 R12: ffffc9000011f920
+R13: ffffc9000011f8d0 R14: ffffc9000011f905 R15: 0000000000000002
+FS:  0000000000000000(0000) GS:ffff8880cf25e000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f482f0cf000 CR3: 00000000309f3000 CR4: 0000000000752ef0
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ arch_stack_walk+0x86/0xf0 arch/x86/kernel/stacktrace.c:25
+ stack_trace_save+0x8e/0xc0 kernel/stacktrace.c:122
+ kasan_save_stack+0x24/0x50 mm/kasan/common.c:56
+ kasan_record_aux_stack+0xa7/0xc0 mm/kasan/generic.c:559
+ __call_rcu_common.constprop.0+0xa4/0x9f0 kernel/rcu/tree.c:3123
+ put_task_struct include/linux/sched/task.h:159 [inline]
+ delayed_put_task_struct+0xf0/0x2a0 kernel/exit.c:231
+ rcu_do_batch kernel/rcu/tree.c:2605 [inline]
+ rcu_core+0x7b1/0x16e0 kernel/rcu/tree.c:2861
+ handle_softirqs+0x1d4/0x900 kernel/softirq.c:622
+ run_ksoftirqd kernel/softirq.c:1063 [inline]
+ run_ksoftirqd+0x3a/0x60 kernel/softirq.c:1055
+ smpboot_thread_fn+0x3d4/0xaa0 kernel/smpboot.c:160
+ kthread+0x446/0x890 kernel/kthread.c:463
+ ret_from_fork+0x669/0x7c0 arch/x86/kernel/process.c:158
+ ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entry_64.S:245
+ </TASK>
+NMI backtrace for cpu 3
+CPU: 3 UID: 0 PID: 1124 Comm: kworker/u18:5 Not tainted 6.18.0-rc7 #2 PREEMPT(full) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events_unbound cfg80211_wiphy_work
+RIP: 0010:__lock_acquire+0x1f4/0x2760 kernel/locking/lockdep.c:5174
+Code: 09 c8 09 d0 8b 94 24 c8 00 00 00 44 09 c8 c1 e2 14 09 d0 8b 94 24 b8 00 00 00 c1 e2 15 09 d0 41 8b 54 24 20 81 e2 ff 1f 00 00 <09> d0 41 89 44 24 20 8b 84 24 c0 00 00 00 41 89 44 24 24 4c 89 d8
+RSP: 0018:ffffc90006777380 EFLAGS: 00000002
+RAX: 0000000000020000 RBX: ffff8881037a8b38 RCX: 0000000000020000
+RDX: 0000000000000007 RSI: 0000000000000000 RDI: 0000000000000003
+RBP: ffff8881037a8000 R08: 000000009a6ba901 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000007 R12: ffff8881037a8bb0
+R13: 0000000000000000 R14: 0000000000000000 R15: ffffffff8dfc80a0
+FS:  0000000000000000(0000) GS:ffff8881a295e000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fc88f9256c0 CR3: 0000000120036000 CR4: 0000000000752ef0
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ lock_acquire kernel/locking/lockdep.c:5868 [inline]
+ lock_acquire+0x17b/0x340 kernel/locking/lockdep.c:5825
+ rcu_lock_acquire include/linux/rcupdate.h:331 [inline]
+ rcu_read_lock include/linux/rcupdate.h:867 [inline]
+ class_rcu_constructor include/linux/rcupdate.h:1195 [inline]
+ unwind_next_frame+0xd3/0x20b0 arch/x86/kernel/unwind_orc.c:479
+ arch_stack_walk+0x86/0xf0 arch/x86/kernel/stacktrace.c:25
+ stack_trace_save+0x8e/0xc0 kernel/stacktrace.c:122
+ kasan_save_stack+0x24/0x50 mm/kasan/common.c:56
+ kasan_record_aux_stack+0xa7/0xc0 mm/kasan/generic.c:559
+ __call_rcu_common.constprop.0+0xa4/0x9f0 kernel/rcu/tree.c:3123
+ kmemleak_free_recursive include/linux/kmemleak.h:50 [inline]
+ slab_free_hook mm/slub.c:2468 [inline]
+ slab_free mm/slub.c:6642 [inline]
+ kfree+0x408/0x740 mm/slub.c:6849
+ ieee80211_rx_mgmt_probe_beacon net/mac80211/ibss.c:1574 [inline]
+ ieee80211_ibss_rx_queued_mgmt+0x19fe/0x2e80 net/mac80211/ibss.c:1600
+ ieee80211_iface_process_skb net/mac80211/iface.c:1702 [inline]
+ ieee80211_iface_work+0xd81/0x1270 net/mac80211/iface.c:1756
+ cfg80211_wiphy_work+0x2cb/0x570 net/wireless/core.c:435
+ process_one_work+0x990/0x1b40 kernel/workqueue.c:3263
+ process_scheduled_works kernel/workqueue.c:3346 [inline]
+ worker_thread+0x67e/0xe90 kernel/workqueue.c:3427
+ kthread+0x446/0x890 kernel/kthread.c:463
+ ret_from_fork+0x669/0x7c0 arch/x86/kernel/process.c:158
+ ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entry_64.S:245
+ </TASK>
